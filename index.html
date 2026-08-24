@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>音叉｜木原優樹</title>
+<meta name="description" content="マーケティング／営業づくりの支援実績。事業会社で新規売上10倍・ROI5倍、買収ECを10倍で売却。個人として20社以上を支援。契約した日から、私がいらなくなる日を設計します。">
+<meta property="og:title" content="音叉｜木原優樹 — 最終回から、逆算する。">
+<meta property="og:description" content="マーケティング／営業づくりの支援実績。戦略の設計から、現場が毎週使う道具の実装まで。">
+<meta property="og:type" content="website">
+<link rel="canonical" href="https://onsa440.jp/">
+<meta property="og:url" content="https://onsa440.jp/">
+<meta property="og:image" content="https://onsa440.jp/portrait.jpg">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%231E2C38'/%3E%3Cpath d='M40 20 L24 32 L40 44' fill='none' stroke='%23F6F7F6' stroke-width='5' stroke-linecap='round' stroke-linejoin='round'/%3E%3Ccircle cx='45' cy='32' r='3.5' fill='%23BA3D24'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho+B1:wght@600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #F6F7F6;        /* 紙：わずかに青みの白 */
+    --paper-2: #EEF1F1;      /* 一段沈んだ紙 */
+    --ink: #1E2C38;          /* 墨藍：見出し */
+    --body: #33424F;         /* 本文 */
+    --mute: #5C6E7E;         /* 藍鼠：補足 */
+    --shu: #BA3D24;          /* 朱：注釈・強調（参謀の赤入れ） */
+    --rule: #D9DFE2;         /* 罫線 */
+    --rule-strong: #B9C3C9;
+    --mincho: "Shippori Mincho B1", "Shippori Mincho", "Yu Mincho", "Hiragino Mincho ProN", serif;
+    --sans: "Hiragino Kaku Gothic ProN", "Hiragino Sans", "Yu Gothic", "Noto Sans JP", "Meiryo", sans-serif;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    * { animation: none !important; transition: none !important; }
+  }
+  body {
+    background: var(--paper);
+    color: var(--body);
+    font-family: var(--sans);
+    font-size: 16px;
+    line-height: 1.9;
+    -webkit-font-smoothing: antialiased;
+    font-feature-settings: "palt" 0;
+  }
+  a { color: var(--ink); text-decoration-color: var(--rule-strong); text-underline-offset: 3px; }
+  a:hover { color: var(--shu); text-decoration-color: var(--shu); }
+  a:focus-visible, .nav a:focus-visible {
+    outline: 2px solid var(--shu); outline-offset: 3px; border-radius: 2px;
+  }
+  .wrap { max-width: 1040px; margin: 0 auto; padding: 0 24px; }
+
+  /* ───────── ナビ ───────── */
+  .nav {
+    position: sticky; top: 0; z-index: 10;
+    background: rgba(246, 247, 246, 0.92);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--rule);
+  }
+  .nav-inner {
+    display: flex; align-items: center; gap: 14px;
+    max-width: 1040px; margin: 0 auto; padding: 14px 24px;
+  }
+  .nav-name { font-family: var(--mincho); font-weight: 700; font-size: 18px; color: var(--ink); letter-spacing: 0.1em; white-space: nowrap; }
+  .nav-owner { font-size: 12px; color: var(--mute); letter-spacing: 0.1em; white-space: nowrap; border-left: 1px solid var(--rule-strong); padding-left: 14px; }
+  .nav-links { display: flex; gap: 20px; margin-left: auto; overflow-x: auto; scrollbar-width: none; }
+  .nav-links::-webkit-scrollbar { display: none; }
+  .nav-links a { font-size: 13px; color: var(--mute); text-decoration: none; white-space: nowrap; letter-spacing: 0.04em; }
+  .nav-links a:hover { color: var(--shu); }
+
+  /* ───────── ヒーロー ───────── */
+  .hero {
+    position: relative;
+    border-bottom: 1px solid var(--rule);
+    background-image:
+      linear-gradient(to right, rgba(30, 44, 56, 0.045) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(30, 44, 56, 0.045) 1px, transparent 1px);
+    background-size: 36px 36px;
+  }
+  .hero-inner {
+    display: grid; grid-template-columns: minmax(0, 1fr) auto auto;
+    grid-template-areas: "text photo tate";
+    gap: 48px;
+    align-items: end;
+    max-width: 1040px; margin: 0 auto; padding: 88px 24px 72px;
+    animation: rise 0.7s ease-out both;
+  }
+  .hero-text { grid-area: text; }
+  .hero-photo { grid-area: photo; width: clamp(210px, 23vw, 292px); }
+  .hero-photo img {
+    display: block; width: 100%; height: auto;
+    border: 1px solid var(--rule-strong);
+  }
+  @keyframes rise { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+  .hero-eyebrow {
+    font-size: 12px; letter-spacing: 0.22em; color: var(--shu);
+    margin-bottom: 28px; font-weight: 600;
+  }
+  .hero-name { font-family: var(--mincho); font-weight: 700; font-size: 34px; color: var(--ink); letter-spacing: 0.08em; line-height: 1.4; }
+  .hero-title { font-size: 13.5px; color: var(--mute); letter-spacing: 0.08em; margin-top: 6px; margin-bottom: 36px; }
+  .hero-lead { max-width: 34em; font-size: 15.5px; }
+  .hero-vow {
+    margin-top: 28px; padding-top: 20px; border-top: 1px solid var(--rule-strong);
+    max-width: 34em; font-size: 15.5px; color: var(--ink); font-weight: 600;
+  }
+  .tate {
+    grid-area: tate;
+    writing-mode: vertical-rl;
+    font-family: var(--mincho); font-weight: 700;
+    font-size: clamp(44px, 5.4vw, 64px);
+    line-height: 1.55; letter-spacing: 0.14em;
+    color: var(--ink);
+    padding: 8px 4px 8px 18px;
+    border-left: 1px solid var(--rule-strong);
+  }
+  .tate span { display: block; }
+  .tate .shu { color: var(--shu); display: inline; }
+  @media (max-width: 960px) {
+    .hero-inner {
+      grid-template-columns: minmax(0, 1fr) auto;
+      grid-template-areas: "text tate" "photo tate";
+      align-items: start;
+    }
+    .tate { align-self: end; }
+    .hero-photo { width: 208px; }
+  }
+  @media (max-width: 780px) {
+    .hero-inner { grid-template-columns: 1fr; grid-template-areas: "tate" "text" "photo"; gap: 40px; padding: 64px 24px 56px; }
+    .tate {
+      writing-mode: horizontal-tb;
+      font-size: clamp(32px, 9vw, 44px);
+      line-height: 1.5; letter-spacing: 0.1em;
+      border-left: none; padding: 0;
+    }
+    .hero-photo { width: min(224px, 62%); }
+  }
+
+  /* ───────── セクション共通 ───────── */
+  section { padding: 76px 0 84px; border-bottom: 1px solid var(--rule); scroll-margin-top: 70px; }
+  .sec-head { margin-bottom: 44px; }
+  .sec-label {
+    display: inline-block; font-size: 11.5px; letter-spacing: 0.24em;
+    color: var(--shu); font-weight: 600; margin-bottom: 12px;
+  }
+  .sec-title { font-family: var(--mincho); font-weight: 700; font-size: clamp(24px, 3.4vw, 31px); color: var(--ink); letter-spacing: 0.06em; line-height: 1.5; text-wrap: balance; }
+  .sec-note { margin-top: 12px; font-size: 13.5px; color: var(--mute); max-width: 40em; }
+
+  /* ───────── 数字で見る実績 ───────── */
+  .stats {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(215px, 1fr));
+    gap: 1px; background: var(--rule); border: 1px solid var(--rule);
+  }
+  .stat { background: var(--paper); padding: 26px 22px 24px; }
+  .stat-num {
+    font-family: var(--mincho); font-weight: 700; color: var(--ink);
+    font-size: 38px; line-height: 1.2; letter-spacing: 0.02em;
+    font-variant-numeric: tabular-nums;
+  }
+  .stat-num .unit { font-size: 21px; margin-left: 2px; }
+  .stat-cap { font-size: 13.5px; color: var(--ink); font-weight: 600; margin-top: 6px; letter-spacing: 0.02em; }
+  .stat-src { font-size: 12.5px; color: var(--mute); margin-top: 8px; line-height: 1.7; }
+
+  /* ───────── 支援スタイル ───────── */
+  .styles { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; }
+  @media (max-width: 840px) { .styles { grid-template-columns: 1fr; gap: 32px; } }
+  .style-item { border-top: 2px solid var(--ink); padding-top: 20px; }
+  .style-item h3 { font-family: var(--mincho); font-weight: 700; font-size: 19.5px; color: var(--ink); letter-spacing: 0.05em; margin-bottom: 12px; }
+  .style-item p { font-size: 14.5px; }
+
+  /* ───────── 代表事例 ───────── */
+  .case { padding: 48px 0; border-top: 1px solid var(--rule); }
+  .case:first-of-type { border-top: none; padding-top: 8px; }
+  .case-meta { font-size: 12.5px; letter-spacing: 0.1em; color: var(--mute); margin-bottom: 10px; }
+  .case h3 { font-family: var(--mincho); font-weight: 700; font-size: clamp(20px, 2.6vw, 24px); color: var(--ink); letter-spacing: 0.05em; line-height: 1.6; margin-bottom: 24px; text-wrap: balance; }
+  .case-grid { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 6fr); gap: 40px; }
+  @media (max-width: 840px) { .case-grid { grid-template-columns: 1fr; gap: 28px; } }
+  .o-label, .b-label {
+    display: block; font-size: 11.5px; letter-spacing: 0.24em; font-weight: 600; margin-bottom: 12px;
+  }
+  .o-label { color: var(--shu); }
+  .b-label { color: var(--mute); }
+  .outcome ul { list-style: none; }
+  .outcome li {
+    font-family: var(--mincho); font-weight: 600;
+    font-size: 17.5px; line-height: 1.75; color: var(--ink);
+    padding-left: 16px; position: relative; margin-bottom: 10px;
+  }
+  .outcome li::before { content: ""; position: absolute; left: 0; top: 0.72em; width: 7px; height: 1.5px; background: var(--shu); }
+  .outcome .em { color: var(--shu); font-weight: 700; }
+  .case-body h4 { margin-top: 22px; }
+  .case-body h4:first-of-type { margin-top: 0; }
+  .case-body p { font-size: 14.5px; }
+  .case-body ul { list-style: none; }
+  .case-body li {
+    font-size: 14.5px; padding-left: 15px; position: relative; margin-bottom: 7px; line-height: 1.85;
+  }
+  .case-body li::before { content: ""; position: absolute; left: 0; top: 0.8em; width: 6px; height: 1px; background: var(--rule-strong); }
+
+  /* ───────── その他の実績 ───────── */
+  .works { border-top: 1px solid var(--rule); }
+  .work { display: grid; grid-template-columns: 110px 1fr; gap: 20px; padding: 18px 0; border-bottom: 1px solid var(--rule); }
+  @media (max-width: 640px) { .work { grid-template-columns: 76px 1fr; gap: 14px; } }
+  .work-year { font-family: var(--mincho); font-weight: 600; font-size: 15px; color: var(--mute); font-variant-numeric: tabular-nums; letter-spacing: 0.04em; padding-top: 2px; }
+  .work-name { font-weight: 600; color: var(--ink); font-size: 15px; }
+  .work-desc { font-size: 13.5px; color: var(--mute); margin-top: 2px; }
+  .work-desc .em { color: var(--shu); font-weight: 600; }
+
+  /* ───────── 企業経営 ───────── */
+  .company-lead { max-width: 40em; margin-bottom: 40px; }
+  .company-lead .em { color: var(--ink); font-weight: 600; }
+  .services { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px; background: var(--rule); border: 1px solid var(--rule); }
+  @media (max-width: 720px) { .services { grid-template-columns: 1fr; } }
+  .service { background: var(--paper); padding: 28px 26px; }
+  .service h3 { font-family: var(--mincho); font-weight: 700; font-size: 17.5px; color: var(--ink); letter-spacing: 0.04em; margin-bottom: 10px; }
+  .service p { font-size: 13.5px; color: var(--body); }
+  .service .hi { display: block; margin-top: 12px; font-family: var(--mincho); font-weight: 600; font-size: 15.5px; color: var(--ink); }
+  .service .hi .em { color: var(--shu); }
+  .service a.link { display: inline-block; margin-top: 10px; font-size: 12.5px; color: var(--mute); }
+  .seminar { margin-top: 24px; font-size: 13.5px; color: var(--mute); }
+
+  /* ───────── 経歴 ───────── */
+  .history-rows { border-top: 1px solid var(--rule-strong); }
+  .hrow { display: grid; grid-template-columns: 180px 1fr; gap: 20px; padding: 18px 0; border-bottom: 1px solid var(--rule); }
+  @media (max-width: 640px) { .hrow { grid-template-columns: 1fr; gap: 2px; padding: 14px 0; } }
+  .hrow dt { font-family: var(--mincho); font-weight: 600; color: var(--mute); font-size: 15px; font-variant-numeric: tabular-nums; letter-spacing: 0.04em; }
+  .hrow dd { color: var(--body); font-size: 15px; }
+  .profile-line { margin-top: 28px; font-size: 14px; color: var(--mute); }
+
+  /* ───────── フッター ───────── */
+  footer { padding: 84px 0 56px; }
+  .motto { font-family: var(--mincho); font-weight: 700; font-size: clamp(21px, 3.2vw, 28px); color: var(--ink); letter-spacing: 0.08em; text-align: center; line-height: 1.7; }
+  .motto .shu { color: var(--shu); }
+  .nda { margin: 36px auto 0; max-width: 37em; font-size: 13px; color: var(--mute); text-align: center; }
+  .copyright { margin-top: 44px; text-align: center; font-size: 12px; color: var(--mute); letter-spacing: 0.08em; }
+</style>
+</head>
+<body>
+
+<nav class="nav" aria-label="ページ内">
+  <div class="nav-inner">
+    <span class="nav-name">音叉</span>
+    <span class="nav-owner">木原優樹</span>
+    <div class="nav-links">
+      <a href="#stats">数字で見る実績</a>
+      <a href="#style">支援スタイル</a>
+      <a href="#cases">代表事例</a>
+      <a href="#works">実績一覧</a>
+      <a href="#company">企業経営</a>
+      <a href="#history">経歴</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="hero-inner">
+    <div class="hero-text">
+      <p class="hero-eyebrow">音叉｜マーケティング戦略の設計と実装</p>
+      <h1 class="hero-name">木原優樹</h1>
+      <p class="hero-title">Webマーケティング歴17年／株式会社バトラー 取締役 兼 マーケティング本部長</p>
+      <p class="hero-lead">事業会社で組織をつくって成果を出した経験、自分の会社を経営している経験、そして個人として20社以上を支援してきた経験。この3つを土台に、マーケティングと営業づくりを支援しています。</p>
+      <p class="hero-vow">契約した日から、私がいらなくなる日——現場だけで回り続ける状態を設計します。</p>
+    </div>
+    <figure class="hero-photo">
+      <img src="portrait.jpg" alt="木原優樹のポートレート" width="720" height="1079" decoding="async">
+    </figure>
+    <p class="tate" aria-label="最終回から、逆算する。"><span>最終回から、</span><span>逆算する<span class="shu">。</span></span></p>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <!-- ═══════ 数字で見る実績 ═══════ -->
+  <section id="stats">
+    <div class="sec-head">
+      <span class="sec-label">実績サマリー</span>
+      <h2 class="sec-title">数字で見る実績</h2>
+    </div>
+    <div class="stats">
+      <div class="stat">
+        <div class="stat-num">10<span class="unit">倍</span></div>
+        <div class="stat-cap">新規売上（ROI 5倍）</div>
+        <div class="stat-src">BtoBマーケティング組織をゼロから立ち上げ</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">10<span class="unit">倍</span></div>
+        <div class="stat-cap">買収価格比での売却</div>
+        <div class="stat-src">旅行予約ECサイト。売上4倍への成長を経て</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">130<span class="unit">％</span></div>
+        <div class="stat-cap">対前年売上</div>
+        <div class="stat-src">SaaS企業の営業組織強化。執行役員1名を輩出</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">5,642<span class="unit">名</span></div>
+        <div class="stat-cap">3店舗合計の会員体制</div>
+        <div class="stat-src">24時間ジム。新店2店舗をゼロから立ち上げ</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">No.1</div>
+        <div class="stat-cap">日本シェア</div>
+        <div class="stat-src">自社Instagramチャットボット。ローンチ1年で3,000アカウント導入</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">4,000<span class="unit">店舗</span></div>
+        <div class="stat-cap">以上に関与</div>
+        <div class="stat-src">店舗ビジネス支援。買収した焼肉店を半年で黒字化</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">100<span class="unit">社</span></div>
+        <div class="stat-cap">以上を支援</div>
+        <div class="stat-src">SEOコンサルタントとして累計</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════ 支援スタイル ═══════ -->
+  <section id="style">
+    <div class="sec-head">
+      <span class="sec-label">支援スタイル</span>
+      <h2 class="sec-title">3つの共通項</h2>
+    </div>
+    <div class="styles">
+      <div class="style-item">
+        <h3>企画書で終わらせない</h3>
+        <p>多くのコンサルティングが「情報が整理されただけ」「企画で止まる」状態に陥りがちな中で、数字が変わるところまでを設計します。組織能力・既存アセット・現場の制約を先に見て、「やれること」ではなく「やり切れて成果が出る構造」をつくります。</p>
+      </div>
+      <div class="style-item">
+        <h3>仕組みにして渡す</h3>
+        <p>営業KPI管理ツール（Google Apps Script 約3,900行のWebアプリ）、月次レポートの自動生成（Python）、生成AIの業務活用基盤まで、外注やツール選定に頼らず自分の手で実装します。戦略が「現場が毎週使う道具」になるまでが設計だと考えています。</p>
+      </div>
+      <div class="style-item">
+        <h3>卒業がゴール</h3>
+        <p>私が抜けたあとも回る状態をゴールに、育成と内製化をセットで設計します。支援先ではマネージャーの事業管掌役員への昇格、マネージャー層からの執行役員輩出、社内担当者による生成AI内製体制の立ち上げなどにつながっています。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════ 代表事例 ═══════ -->
+  <section id="cases">
+    <div class="sec-head">
+      <span class="sec-label">代表事例</span>
+      <h2 class="sec-title">成果から、さかのぼって読む6つの事例</h2>
+      <p class="sec-note">「最終回から、逆算する。」の流儀にならい、各事例も成果を先頭に置いています。</p>
+    </div>
+
+    <article class="case">
+      <p class="case-meta">渋谷IT企業（年商20億・170名）｜2017〜2019年｜マーケティング組織立ち上げ・責任者</p>
+      <h3>BtoBマーケティング組織の立ち上げ</h3>
+      <div class="case-grid">
+        <div class="outcome">
+          <span class="o-label">成果</span>
+          <ul>
+            <li>新規売上<span class="em">10倍</span>、ROI <span class="em">5倍</span></li>
+            <li>22名規模のマーケティング組織をゼロから構築</li>
+          </ul>
+        </div>
+        <div class="case-body">
+          <h4 class="b-label">背景</h4>
+          <p>事業の成長が営業の人力に依存し、マーケティングという機能が社内に存在しなかった。</p>
+          <h4 class="b-label">打ち手</h4>
+          <ul>
+            <li>インサイドセールス／フィールドセールスを分業設計し、商談化までのプロセスを標準化</li>
+            <li>Salesforce／Marketo／FORCAS／Tableau を導入し、数万行規模のデータ統計解析で意思決定を数字に置き換え</li>
+            <li>セミナー・コンテンツ・広告を一本のファネルに統合し、PLとKPIを自ら管理</li>
+          </ul>
+        </div>
+      </div>
+    </article>
+
+    <article class="case">
+      <p class="case-meta">同社・B2C事業｜2015〜2017年｜買収後のマーケティング責任者</p>
+      <h3>旅行予約ECサイトの成長と売却</h3>
+      <div class="case-grid">
+        <div class="outcome">
+          <span class="o-label">成果</span>
+          <ul>
+            <li>売上<span class="em">4倍</span>・集客2倍・CVR2倍・在庫10倍</li>
+            <li>買収価格の<span class="em">10倍</span>で売却</li>
+          </ul>
+        </div>
+        <div class="case-body">
+          <h4 class="b-label">背景</h4>
+          <p>買収直後の旅行予約サイト。事業成長と企業価値の最大化がミッション。</p>
+          <h4 class="b-label">打ち手</h4>
+          <ul>
+            <li>集客・在庫・UXを一体で設計（在庫アライアンスの構築、開発部門と連携したCVR改善）</li>
+            <li>事業KPIを設計し、意思決定を数字で回す体制に</li>
+          </ul>
+        </div>
+      </div>
+    </article>
+
+    <article class="case">
+      <p class="case-meta">ECサイト管理SaaS｜2024年〜現在（3年目・継続中）</p>
+      <h3>営業組織の再設計と「動くKPIツール」</h3>
+      <div class="case-grid">
+        <div class="outcome">
+          <span class="o-label">成果</span>
+          <ul>
+            <li>対前年売上<span class="em">130％</span>成長</li>
+            <li>マネージャー層から執行役員を<span class="em">1名</span>創出</li>
+            <li>支援範囲が営業育成 → 評価制度 → 営業部全体戦略へと拡大し、継続中</li>
+          </ul>
+        </div>
+        <div class="case-body">
+          <h4 class="b-label">背景</h4>
+          <p>事業拡大に伴い営業が属人化。育てる仕組みも、評価する物差しもない状態。</p>
+          <h4 class="b-label">打ち手</h4>
+          <ul>
+            <li>顧客タイプ整理 → 勝てる営業シナリオ → 商談プロセスの標準化までを一気通貫で設計</li>
+            <li>12段階グレードの営業評価制度を設計し、育成と評価を接続</li>
+            <li>マネージャー4名・リーダー5名を育成。現場メンバーには四半期コーチングを設計・実施</li>
+            <li>振り返り・目標設定・自己分析を型化した営業KPI管理ツールを自ら実装（Google Apps Script 約3,900行のWebアプリ。日次〜四半期×リーダー版・メンバー版の全7シートが実運用中）</li>
+          </ul>
+        </div>
+      </div>
+    </article>
+
+    <article class="case">
+      <p class="case-meta">フィットネスクラブ（24時間ジム3店舗）｜2025年1月〜現在</p>
+      <h3>新店2店舗の立ち上げと3店舗のマーケティング統括</h3>
+      <div class="case-grid">
+        <div class="outcome">
+          <span class="o-label">成果</span>
+          <ul>
+            <li>新店2店舗をゼロから立ち上げ、2店舗合計<span class="em">3,272名</span>へ（2026年7月時点）</li>
+            <li>1号店はグランドオープンから10ヶ月で会員1,391名</li>
+            <li>既存店を含む3店舗合計<span class="em">5,642名</span>体制を構築</li>
+            <li>立ち上げ2年目も、月次の純増が4ヶ月連続で目標を上回る</li>
+          </ul>
+        </div>
+        <div class="case-body">
+          <h4 class="b-label">背景</h4>
+          <p>既存1店舗を運営する企業が、新店2店舗を同時期にオープンするタイミングで参画。</p>
+          <h4 class="b-label">打ち手</h4>
+          <ul>
+            <li>新店2店舗の立ち上げ集客（プレオープン〜グランドオープンの販促設計、開業後の獲得計画）</li>
+            <li>商圏・競合を分析し、市場規模から逆算した施策戦略を全体版・店舗別に設計</li>
+            <li>戦略から週次運用までを単一の管理シートに統合し、KGIレポートを仕組み化</li>
+            <li>年間キャンペーン企画表・店舗別販促表・LINE・Googleビジネスプロフィール・Instagram広告を一体運用</li>
+            <li>在籍会員の属性分析と退会理由の分析で、獲得と維持の両輪を設計</li>
+          </ul>
+        </div>
+      </div>
+    </article>
+
+    <article class="case">
+      <p class="case-meta">税理士事務所（28名規模）｜2026年〜現在</p>
+      <h3>マーケ支援 × 生成AI活用基盤の構築</h3>
+      <div class="case-grid">
+        <div class="outcome">
+          <span class="o-label">現在地</span>
+          <ul>
+            <li>生成AI活用基盤を受注から<span class="em">約3週間</span>で納品</li>
+            <li>納品後、月次の運用保守契約へ移行し継続中</li>
+          </ul>
+        </div>
+        <div class="case-body">
+          <h4 class="b-label">背景</h4>
+          <p>講座事業の販促物が整っておらず、社内の生成AI活用も個人差が大きい。</p>
+          <h4 class="b-label">打ち手</h4>
+          <ul>
+            <li>商談資料・事例集・トークスクリプト・LINE公式アカウント運用設計書を制作</li>
+            <li>税務顧問部門の成長戦略を5部構成のマスター資料に設計。自作の戦略資料に第三者目線の検証レポートを付けて納品（欠陥を自ら特定し修正案まで提示）</li>
+            <li>導入マニュアルの執筆と120分のキックオフ研修まで実施</li>
+            <li>AI業務支援システムの設計書と動く試作を構築（回答範囲の限定・出典の付与・範囲外の断り方まで含むガードレール設計）</li>
+          </ul>
+        </div>
+      </div>
+    </article>
+
+    <article class="case">
+      <p class="case-meta">農業機械メーカー（創業80年超）｜2026年〜現在</p>
+      <h3>市場調査を「自走」でやり切る</h3>
+      <div class="case-grid">
+        <div class="outcome">
+          <span class="o-label">現在地</span>
+          <ul>
+            <li>調査を自ら設計・入稿する方式で、総額を<span class="em">約4分の1</span>に圧縮</li>
+            <li>定量調査は本調査の実施段階。ECブランド戦略は経営承認のプロセスを進行中</li>
+          </ul>
+        </div>
+        <div class="case-body">
+          <h4 class="b-label">背景</h4>
+          <p>主力製品のリニューアルとEC強化。調査会社のフルサポート型見積りが予算を大きく超過。</p>
+          <h4 class="b-label">打ち手</h4>
+          <ul>
+            <li>全67問の消費者調査を設計。見分けたい差から必要人数を逆算し、回答品質を確認する設問で読み飛ばし回答を除外する設計を組み込み</li>
+            <li>社内ヒアリング（全22問）で現場の認識を先に引き出し、外部データから立てた仮説と突合</li>
+            <li>市場規模を公開データから積み上げ、販売目標の実現可能性を複数シナリオで試算</li>
+            <li>ECブランド戦略と経営層向けプレゼン一式を作成し、プレゼンに同席</li>
+          </ul>
+        </div>
+      </div>
+    </article>
+  </section>
+
+  <!-- ═══════ その他の実績 ═══════ -->
+  <section id="works">
+    <div class="sec-head">
+      <span class="sec-label">実績一覧</span>
+      <h2 class="sec-title">その他の実績（新しい順）</h2>
+    </div>
+    <div class="works">
+      <div class="work">
+        <div class="work-year">2026〜</div>
+        <div>
+          <div class="work-name">自動車リサイクル企業（創業40年超）｜BtoC集客の戦略設計と実行伴走</div>
+          <div class="work-desc">ブランドコンセプトを経営層と合意し、サービスを商品化。LP設計（構成・コピー・実装指示）まで完了し、社内担当者が生成AIで制作を自走できる体制づくりまで伴走</div>
+        </div>
+      </div>
+      <div class="work">
+        <div class="work-year">2024〜</div>
+        <div>
+          <div class="work-name">プリン専門店カフェ｜事業成長支援</div>
+          <div class="work-desc">ターゲット再定義・ブランドコンセプト設計・組織設計。2025年 対前年<span class="em">売上110％成長</span></div>
+        </div>
+      </div>
+      <div class="work">
+        <div class="work-year">2024〜</div>
+        <div>
+          <div class="work-name">アパレルメーカー｜幹部育成・戦略伴走</div>
+          <div class="work-desc">マネージャーへの1年間のOJT伴走（事業戦略・PL管理・意思決定の構造化）。支援対象者が<span class="em">事業管掌役員に昇格</span>（役員会承認）</div>
+        </div>
+      </div>
+      <div class="work">
+        <div class="work-year">2024〜</div>
+        <div>
+          <div class="work-name">木製食器メーカー｜経営・マーケ支援</div>
+          <div class="work-desc">経営目標・PL計画策定、マーケ戦術刷新。<span class="em">売上V字回復</span></div>
+        </div>
+      </div>
+      <div class="work">
+        <div class="work-year">2024〜</div>
+        <div>
+          <div class="work-name">西陣織 織元企業｜経営・事業仕組み化支援</div>
+          <div class="work-desc">事業構造整理、PL計画、ブランドコンセプト設計、HP制作、プロモーション支援</div>
+        </div>
+      </div>
+      <div class="work">
+        <div class="work-year">2023〜</div>
+        <div>
+          <div class="work-name">工務店（注文住宅）｜新ブランド立ち上げ</div>
+          <div class="work-desc">事業ボトルネック分析、競合分析、ターゲット整理、商談・営業導線設計</div>
+        </div>
+      </div>
+      <div class="work">
+        <div class="work-year">2023〜</div>
+        <div>
+          <div class="work-name">Instagram戦略立案・運用支援（複数社）</div>
+          <div class="work-desc">日本シェアNo.1キッチン雑貨メーカー、鍼灸院、コスメメーカー等。認知<span class="em">最大4倍成長</span></div>
+        </div>
+      </div>
+      <div class="work">
+        <div class="work-year">2023</div>
+        <div>
+          <div class="work-name">大手制作会社｜コンテンツマーケティング戦略</div>
+        </div>
+      </div>
+      <div class="work">
+        <div class="work-year">2022</div>
+        <div>
+          <div class="work-name">観光財団｜コンテンツマーケティング戦略（3ヶ月）</div>
+          <div class="work-desc">サイトカテゴリ再設計、キーワード調査、コンテンツ企画、集客シミュレーション</div>
+        </div>
+      </div>
+      <div class="work">
+        <div class="work-year">2022</div>
+        <div>
+          <div class="work-name">放送事業者｜コンテンツマーケティング戦略（3ヶ月）</div>
+        </div>
+      </div>
+      <div class="work">
+        <div class="work-year">2022</div>
+        <div>
+          <div class="work-name">日本シェアNo.1 土鍋メーカー｜事業承継支援（6ヶ月）</div>
+          <div class="work-desc">Who／What整理による戦略再構築、ペルソナ・カスタマージャーニー設計。<span class="em">売上増加に貢献</span></div>
+        </div>
+      </div>
+      <div class="work">
+        <div class="work-year">2021</div>
+        <div>
+          <div class="work-name">アプリマーケティングプラットフォーム｜ペルソナ設計・コンテンツ企画</div>
+        </div>
+      </div>
+      <div class="work">
+        <div class="work-year">2020〜22</div>
+        <div>
+          <div class="work-name">電子ホワイトボード事業｜マーケ／営業戦略・組織構築</div>
+          <div class="work-desc">Salesforce導入、STP策定、商品戦略、代理店プログラム設計</div>
+        </div>
+      </div>
+      <div class="work">
+        <div class="work-year">2020</div>
+        <div>
+          <div class="work-name">研究開発レンタルラボ（新コンセプト施設）｜マーケティング戦略立案（3ヶ月）</div>
+        </div>
+      </div>
+      <div class="work">
+        <div class="work-year">2019</div>
+        <div>
+          <div class="work-name">旅行業界マーケティングコンサルティング（4社）</div>
+          <div class="work-desc">3カ年戦略立案、10万行規模のデータ統合、デシル・RFM・LTV分析、3カ年PLシミュレーション。<span class="em">3ヶ月で役員会承認</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════ 企業経営 ═══════ -->
+  <section id="company">
+    <div class="sec-head">
+      <span class="sec-label">企業経営</span>
+      <h2 class="sec-title">株式会社バトラー</h2>
+      <p class="sec-note">取締役 兼 マーケティング本部長｜2020年5月〜現在｜<a href="https://batra.co.jp/" target="_blank" rel="noopener">batra.co.jp</a></p>
+    </div>
+    <p class="company-lead">「ローカルブランドの進化をデザインする」を掲げ、店舗ビジネス向けのサービス群を自社展開。これまでに<span class="em">4,000店舗以上</span>に関与してきました。支援する側とされる側の両方を知っていることが、コンサルティングの土台になっています。</p>
+    <div class="services">
+      <div class="service">
+        <h3>Instagramチャットボット「AutoReply」</h3>
+        <p>2021年10月ローンチ。事業計画策定、マーケティング戦略設計・実行、組織構築、代理店マネジメント、プロダクト企画・開発連携を担当。</p>
+        <span class="hi">ローンチ1年で3,000アカウント導入、日本シェア<span class="em">No.1</span></span>
+        <a class="link" href="https://autoreply.jp/" target="_blank" rel="noopener">autoreply.jp</a>
+      </div>
+      <div class="service">
+        <h3>口コミ獲得強化ツール「Reviewキャッチ」</h3>
+        <p>立ち上げ・推進。Googleのガイドラインに準拠した設計が特徴。</p>
+        <a class="link" href="https://reviewcatch.biz/" target="_blank" rel="noopener">reviewcatch.biz</a>
+      </div>
+      <div class="service">
+        <h3>無断キャンセル料請求サービス「Paytry」</h3>
+        <p>完全成果報酬型サービス。1次〜3次の階層を持つ代理店網の設計と契約実務、決済・パートナーポータルの仕組み構築までを担当。</p>
+      </div>
+      <div class="service">
+        <h3>焼肉店「beef by KOH」（東京・広尾）</h3>
+        <p>自社運営。集客・プロモーション設計、ブランドコンセプト構築、売上分析・改善。</p>
+        <span class="hi">店舗買収後、<span class="em">半年で黒字化</span></span>
+      </div>
+    </div>
+    <p class="seminar"><a href="https://app.notion.com/p/7e891a4dc7f244bfaf297cb674eff4d0?pvs=21" target="_blank" rel="noopener">他社セミナー登壇の記録</a></p>
+  </section>
+
+  <!-- ═══════ 経歴 ═══════ -->
+  <section id="history" style="border-bottom: none;">
+    <div class="sec-head">
+      <span class="sec-label">経歴</span>
+      <h2 class="sec-title">これまでの歩み</h2>
+    </div>
+    <dl class="history-rows">
+      <div class="hrow">
+        <dt>2007〜2009</dt>
+        <dd>人材メディア企業（新卒・広告営業）</dd>
+      </div>
+      <div class="hrow">
+        <dt>2009〜2019</dt>
+        <dd>渋谷IT企業（年商20億・170名）SEOコンサルタント → 旅行予約EC責任者 → マーケティング組織責任者</dd>
+      </div>
+      <div class="hrow">
+        <dt>2019</dt>
+        <dd>退職後、約半年の旅を経て10月に独立</dd>
+      </div>
+      <div class="hrow">
+        <dt>2020年5月〜</dt>
+        <dd>株式会社バトラー 取締役 兼 マーケティング本部長（個人での支援と並行）</dd>
+      </div>
+    </dl>
+    <p class="profile-line">1984年生まれ。大阪生まれ・香川育ち。Webマーケティング歴17年。</p>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <p class="motto">机上の空論に、一円も払わせない<span class="shu">。</span></p>
+    <p class="nda">ここに載せた事例の多くは、実際の成果物（戦略資料・調査設計・ツール画面など）を守秘義務の範囲内で面談時にご覧いただけます。クライアント名は非公開としています。</p>
+    <p class="copyright">音叉｜© 木原優樹</p>
+  </div>
+</footer>
+
+</body>
+</html>
