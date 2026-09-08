@@ -205,6 +205,10 @@
   .concept .c-story { margin-top: 16px; font-size: 13.5px; color: var(--body); }
   .concept .hi2 { display: block; margin-top: 14px; font-family: var(--mincho); font-weight: 600; font-size: 14.5px; color: var(--ink); }
   .concept .hi2 .em { color: var(--shu); }
+  .deliverables { list-style: none; columns: 2; column-gap: 48px; }
+  @media (max-width: 720px) { .deliverables { columns: 1; } }
+  .deliverables li { font-size: 14px; padding-left: 16px; position: relative; margin-bottom: 10px; line-height: 1.85; break-inside: avoid; }
+  .deliverables li::before { content: ""; position: absolute; left: 0; top: 0.8em; width: 7px; height: 1.5px; background: var(--shu); }
   .think-bridge { margin-top: 40px; font-size: 14.5px; color: var(--body); max-width: 42em; }
   .think-bridge .strong { color: var(--ink); font-weight: 600; }
 
@@ -461,7 +465,18 @@
         <p class="c-story">多くのお客様は満足しているのに、口コミに残る声はほんの一部。お願いする手間と心理的な負担が、感謝を埋もれさせてきました。30秒のアンケートとAIの下書きで、埋もれていた「ありがとう」を言葉にします。Googleのガイドラインに準拠した設計です。</p>
       </div>
     </div>
-    <p class="think-bridge">クライアントの支援でも、この3層をそのまま使います。西陣織の織元、日本シェアNo.1の土鍋メーカー、自動車リサイクル企業——<span class="strong">業界が変わっても、構造は変わりません。</span>その構造が現場でどんな数字になったかが、次の事例です。</p>
+    <h3 class="concepts-head sub-gap">コンセプトの先に、渡してきたもの</h3>
+    <p class="concepts-note">言葉を作って終わる仕事はしていません。連想が数字になるまでに必要な道具は、自分の手で作って渡します。</p>
+    <ul class="deliverables">
+      <li>事業・マーケティング戦略の資料一式（数十枚・複数部構成）</li>
+      <li>KGI・KPIツリーと、目標から施策へ数字を分解する逆算の設計</li>
+      <li>定量調査の設計から入稿まで（2,400名規模の調査を自ら設計・入稿）</li>
+      <li>LPの構成・コピー確定稿・実装指示</li>
+      <li>営業KPIマネジメントツール（Google Apps Script 約3,900行を自分で実装。現場が毎週使う道具として稼働中）</li>
+      <li>月次レポートの自動生成システム（Python。毎月の納品物として稼働中）</li>
+      <li>導入研修・運用マニュアル・生成AIの制作キット（私が抜けたあとも社内で回し続けるための引き継ぎ一式）</li>
+    </ul>
+    <p class="think-bridge">クライアントの支援でも、この3層をそのまま使います。西陣織の織元、日本シェアNo.1の土鍋メーカー、自動車リサイクル企業——業界が変わっても、構造は変わりません。<span class="strong">そしてコンセプトを、言葉のまま置いて帰りません。KPIに翻訳し、道具に実装し、現場だけで回り続ける状態にして渡す。</span>その結果が、次の事例です。</p>
   </section>
 
   <!-- ═══════ 代表事例 ═══════ -->
