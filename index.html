@@ -167,6 +167,36 @@
   .style-item h3 { font-family: var(--mincho); font-weight: 700; font-size: 19.5px; color: var(--ink); letter-spacing: 0.05em; margin-bottom: 12px; }
   .style-item p { font-size: 14.5px; }
 
+  /* ───────── 考え方（ブランド3層構造） ───────── */
+  .levels { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--rule); border: 1px solid var(--rule); }
+  @media (max-width: 840px) { .levels { grid-template-columns: 1fr; } }
+  .level { background: var(--paper); padding: 26px 24px 28px; }
+  .level-no { display: block; font-size: 11.5px; letter-spacing: 0.24em; color: var(--shu); font-weight: 600; margin-bottom: 12px; }
+  .level h3 { font-family: var(--mincho); font-weight: 700; font-size: 18.5px; color: var(--ink); letter-spacing: 0.04em; margin-bottom: 4px; }
+  .level .role { display: block; font-size: 12.5px; color: var(--mute); margin-bottom: 12px; letter-spacing: 0.04em; }
+  .level p { font-size: 14px; }
+  .onsa-note { margin: 44px 0 60px; padding: 4px 0 4px 26px; border-left: 2px solid var(--shu); max-width: 42em; }
+  .onsa-note p { font-size: 14.5px; }
+  .onsa-note .strong { color: var(--ink); font-weight: 600; }
+  .concepts-head { font-family: var(--mincho); font-weight: 700; font-size: 19px; color: var(--ink); letter-spacing: 0.05em; margin-bottom: 8px; }
+  .concepts-note { font-size: 13.5px; color: var(--mute); margin-bottom: 24px; max-width: 40em; }
+  .concepts { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px; background: var(--rule); border: 1px solid var(--rule); }
+  @media (max-width: 840px) { .concepts { grid-template-columns: 1fr; } }
+  .concept { background: var(--paper); padding: 30px 28px 28px; }
+  .concept h4 { font-family: var(--mincho); font-weight: 700; font-size: 17.5px; color: var(--ink); letter-spacing: 0.04em; }
+  .concept .c-meta { font-size: 12.5px; color: var(--mute); margin: 4px 0 16px; letter-spacing: 0.04em; }
+  .c-rows { border-top: 1px solid var(--rule); }
+  .c-row { display: grid; grid-template-columns: 92px 1fr; gap: 14px; padding: 10px 0; border-bottom: 1px solid var(--rule); }
+  @media (max-width: 420px) { .c-row { grid-template-columns: 1fr; gap: 2px; } }
+  .c-row dt { font-size: 11.5px; letter-spacing: 0.18em; color: var(--mute); font-weight: 600; padding-top: 5px; }
+  .c-row dd { font-size: 14.5px; color: var(--ink); line-height: 1.8; }
+  .c-row.copy dd { font-family: var(--mincho); font-weight: 700; font-size: 17.5px; color: var(--shu); letter-spacing: 0.04em; }
+  .concept .c-story { margin-top: 16px; font-size: 13.5px; color: var(--body); }
+  .concept .hi2 { display: block; margin-top: 14px; font-family: var(--mincho); font-weight: 600; font-size: 14.5px; color: var(--ink); }
+  .concept .hi2 .em { color: var(--shu); }
+  .think-bridge { margin-top: 40px; font-size: 14.5px; color: var(--body); max-width: 42em; }
+  .think-bridge .strong { color: var(--ink); font-weight: 600; }
+
   /* ───────── 代表事例 ───────── */
   .case { padding: 48px 0; border-top: 1px solid var(--rule); }
   .case:first-of-type { border-top: none; padding-top: 8px; }
@@ -248,6 +278,7 @@
     <div class="nav-links">
       <a href="#stats">数字で見る実績</a>
       <a href="#style">支援スタイル</a>
+      <a href="#thinking">考え方</a>
       <a href="#cases">代表事例</a>
       <a href="#works">実績一覧</a>
       <a href="#company">企業経営</a>
@@ -339,6 +370,64 @@
         <p>私が抜けたあとも回る状態をゴールに、育成と内製化をセットで設計します。支援先ではマネージャーの事業管掌役員への昇格、マネージャー層からの執行役員輩出、社内担当者による生成AI内製体制の立ち上げなどにつながっています。</p>
       </div>
     </div>
+  </section>
+
+  <!-- ═══════ 考え方 ═══════ -->
+  <section id="thinking">
+    <div class="sec-head">
+      <span class="sec-label">考え方</span>
+      <h2 class="sec-title">ブランドは「言葉」ではなく、構造でできている。</h2>
+      <p class="sec-note">人は論理ではなく、無意識で選びます。比較や検討が始まる前に頭の中に立ち上がる連想——それがブランドであり、選ばれる確率を上げる「脳内の記号」です。だから私は、ブランドをセンスではなく、3層の構造として設計します。</p>
+    </div>
+    <div class="levels">
+      <div class="level">
+        <span class="level-no">LEVEL 1｜ゴール</span>
+        <h3>ブランド連想</h3>
+        <span class="role">頭の中に作りたい状態</span>
+        <p>比較や検討の前に、無意識に立ち上がる連想。「あの店なら、きっと◯◯」と説明の前に思い出される状態を、最初に定めます。</p>
+      </div>
+      <div class="level">
+        <span class="level-no">LEVEL 2｜設計図</span>
+        <h3>ブランドコンセプト</h3>
+        <span class="role">狙った連想を再現する、戦い方の設計図</span>
+        <p>その連想を再現するための一文。施策の「やる／やらない」がこの一文だけで判断できるところまで研ぎます。</p>
+      </div>
+      <div class="level">
+        <span class="level-no">LEVEL 3｜起動装置</span>
+        <h3>マーケティングコピー</h3>
+        <span class="role">連想を一瞬で起動させる言葉</span>
+        <p>説明はしません。狙った連想を一瞬で立ち上げる、いちばん短いスイッチを作ります。</p>
+      </div>
+    </div>
+    <div class="onsa-note">
+      <p>屋号の「音叉」は、この構造の真ん中から取りました。<span class="strong">コンセプトという基準音がひとつ定まれば、投稿も、接客も、価格も、誰かが号令をかけなくても同じ方向に揃いはじめる。</span>私は演奏し続ける人ではなく、基準音を置いて去る人でありたいと考えています。</p>
+    </div>
+    <h3 class="concepts-head">この構造を、自社ブランドで回しています</h3>
+    <p class="concepts-note">コンセプトワークの実物です。クライアントのものは面談でお見せしますが、自社のものは隠す理由がないので、そのまま置いておきます。</p>
+    <div class="concepts">
+      <div class="concept">
+        <h4>beef by KOH</h4>
+        <p class="c-meta">和牛焼肉店（東京・広尾）｜自社で買収・運営</p>
+        <dl class="c-rows">
+          <div class="c-row"><dt>連想</dt><dd>いつでも、かっこよくしてくれる店</dd></div>
+          <div class="c-row"><dt>コンセプト</dt><dd>富裕層の、地元の焼肉屋さん</dd></div>
+          <div class="c-row copy"><dt>コピー</dt><dd>最上を、気軽に。</dd></div>
+        </dl>
+        <p class="c-story">特別な日の高級店か、普段使いの無難な店か。その二択からこぼれる夜を受け止める店です。NYのミシュラン星付き焼肉店で腕を磨いた料理長のカットも、ライブ感あるカウンターも、施策は「最上を、気軽に」に合うかどうかで決めています。</p>
+        <span class="hi2">買収から<span class="em">半年で黒字化</span></span>
+      </div>
+      <div class="concept">
+        <h4>Reviewキャッチ</h4>
+        <p class="c-meta">Google口コミ獲得ツール｜自社開発・提供</p>
+        <dl class="c-rows">
+          <div class="c-row"><dt>連想</dt><dd>「ありがとう」が、資産になっていく仕組み</dd></div>
+          <div class="c-row"><dt>コンセプト</dt><dd>口コミ増幅器（アンプ）</dd></div>
+          <div class="c-row copy"><dt>コピー</dt><dd>「ありがとう」を、選ばれ続ける理由に変える。</dd></div>
+        </dl>
+        <p class="c-story">多くのお客様は満足しているのに、口コミに残る声はほんの一部。お願いする手間と心理的な負担が、感謝を埋もれさせてきました。30秒のアンケートとAIの下書きで、埋もれていた「ありがとう」を言葉にします。Googleのガイドラインに準拠した設計です。</p>
+      </div>
+    </div>
+    <p class="think-bridge">クライアントの支援でも、この3層をそのまま使います。西陣織の織元、日本シェアNo.1の土鍋メーカー、自動車リサイクル企業——<span class="strong">業界が変わっても、構造は変わりません。</span>その構造が現場でどんな数字になったかが、次の事例です。</p>
   </section>
 
   <!-- ═══════ 代表事例 ═══════ -->
