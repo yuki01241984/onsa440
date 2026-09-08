@@ -1,0 +1,6 @@
+# onsa440.jp は検索エンジンに載せない方針（2026-09-08 本人確定）。
+# 実際の非表示指定は index.html の <meta name="robots" content="noindex"> が担う。
+# ここで Disallow するとクローラーが noindex タグを読めなくなり、
+# 外部リンク経由でURLだけが検索結果に残ることがあるため、あえてクロールは許可する。
+User-agent: *
+Allow: /
