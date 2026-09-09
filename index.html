@@ -170,7 +170,8 @@
 
   /* ───────── 考え方（ブランド3層構造） ───────── */
   .levels { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--rule); border: 1px solid var(--rule); }
-  @media (max-width: 840px) { .levels { grid-template-columns: 1fr; } }
+  .levels.duo { grid-template-columns: repeat(2, 1fr); }
+  @media (max-width: 840px) { .levels, .levels.duo { grid-template-columns: 1fr; } }
   .level { background: var(--paper); padding: 26px 24px 28px; }
   .level-no { display: block; font-size: 11.5px; letter-spacing: 0.24em; color: var(--shu); font-weight: 600; margin-bottom: 12px; }
   .level h3 { font-family: var(--mincho); font-weight: 700; font-size: 18.5px; color: var(--ink); letter-spacing: 0.04em; margin-bottom: 4px; }
@@ -191,6 +192,7 @@
   .onsa-note .strong { color: var(--ink); font-weight: 600; }
   .concepts-head { font-family: var(--mincho); font-weight: 700; font-size: 19px; color: var(--ink); letter-spacing: 0.05em; margin-bottom: 8px; }
   .concepts-note { font-size: 13.5px; color: var(--mute); margin-bottom: 24px; max-width: 40em; }
+  .concepts-note .strong { color: var(--ink); font-weight: 600; }
   .concepts { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px; background: var(--rule); border: 1px solid var(--rule); }
   @media (max-width: 840px) { .concepts { grid-template-columns: 1fr; } }
   .concept { background: var(--paper); padding: 30px 28px 28px; }
@@ -398,7 +400,22 @@
     <p class="seq"><span class="seq-item"><b>目標</b>（事業の数字）</span><span class="gt">＞</span><span class="seq-item"><b>戦略</b>（誰に・何を＝コンセプト）</span><span class="gt">＞</span><span class="seq-item"><b>戦術</b>（施策と実行）</span></p>
     <p class="seq-note">上位が下位を規定し、下位は上位に奉仕する。どれほど優れた戦術も、戦略が間違っていれば目標には届きません。そして、どれほど美しい戦略も、目標に届く大きさでなければ選びません。</p>
     <h3 class="concepts-head sub-gap">戦略の設計図——ブランドは「言葉」ではなく、構造でできている</h3>
-    <p class="concepts-note">戦略とは「誰に・何を」の選択です。その選択は、顧客の頭の中では連想という形で決着します——人は論理ではなく、無意識で選ぶからです。誰の頭の中に、どんな連想で座るか。だからその手前に、まず宛先を定めます。ターゲットは、年齢や属性ではなく「心の底で何を求める人か」。属性は、届け方を変える変数にすぎません。インサイトは、アンケートに書かれる不満の、もう一段下。本人もまだ言葉にしていない、「言われてみたら、そうかも」という本音です。刺さるかどうかは、コピーを書く前のここで決まっています。この宛先にどんな連想を立ち上げるか——それを設計図に落としたものが、この3層です。</p>
+    <p class="concepts-note">戦略とは「誰に・何を」の選択です。その選択は、顧客の頭の中では連想という形で決着します——人は論理ではなく、無意識で選ぶからです。だから設計は、「何を」より先に、宛先——「誰に」を定めることから始めます。</p>
+    <div class="levels duo">
+      <div class="level">
+        <span class="level-no">前提｜誰に</span>
+        <h3>ターゲット</h3>
+        <span class="role">心の底で、何を求める人か</span>
+        <p>年齢や属性では切りません。属性は、届け方を変える変数にすぎないからです。求めるものの本質で、宛先をひとつに定めます。</p>
+      </div>
+      <div class="level">
+        <span class="level-no">前提｜誰に</span>
+        <h3>インサイト</h3>
+        <span class="role">まだ言葉になっていない本音</span>
+        <p>アンケートに書かれる不満の、もう一段下。「言われてみたら、そうかも」という一言を掘り当てます。刺さるかどうかは、コピーを書く前のここで決まっています。</p>
+      </div>
+    </div>
+    <p class="concepts-note" style="margin-top: 24px;"><span class="strong">このターゲットとインサイトの選定で、市場の大きさ——目標を達成できるかどうかが、ほぼ決まります。</span>その本音を抱えた人の数が、そのまま連想の座席の大きさになるからです。宛先は、響くかどうかだけでなく、目標の数字から逆算して審査します。誰の頭の中に、どんな連想で座るか。それを設計図に落としたものが、この3層です。</p>
     <div class="levels">
       <div class="level">
         <span class="level-no">LEVEL 1｜ゴール</span>
